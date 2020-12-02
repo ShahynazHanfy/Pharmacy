@@ -1,0 +1,69 @@
+
+<!-- <p-toast></p-toast> -->
+
+ <!-- <p-button [label]="selectedProduct ? selectedProduct.name : 'Select a Product'" icon="pi pi-search" (click)="op.toggle($event)"></p-button>  -->
+<!-- <p-button label= 'Select a Product' icon="pi pi-search" (click)="op.toggle($event)" style="margin-left: 300px;"></p-button>
+
+<p-overlayPanel #op [showCloseIcon]="true" [style]="{width: '450px'}">
+    <ng-template pTemplate>
+        <p-table [value]="products" selectionMode="single" [(selection)]="selectedProduct" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="5">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
+                    <th>Image</th>
+                    <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-product>
+                <tr [pSelectableRow]="rowData">
+                    <td>{{product.name}}</td>
+                    <td><img src="src\assets\assets\coco\Cap.jpg" [alt]="product.image" class="product-image" /></td>
+                    <td>{{product.price}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </ng-template>
+</p-overlayPanel> -->
+
+<form action="" style="width: 90%;">
+<div class="card card-outline-secondary">
+    <div class="card-body">
+        <h3 class="text-center">Insert Firm Details</h3>
+        <hr>
+       
+        <form class="form" role="form" autocomplete="off" #data="ngForm" (ngSubmit)="submitFirmDetais(data)">
+            <div class="form-group">
+                <label for="cc_name" class="labelstyle">Firm Name</label>
+                <input type="text" class="form-control" [(ngModel)]="firm.name" name="name" id="cc_name" pattern="\w+ \w+.*" title="First and last name" required="required">
+            </div>
+            <div class="form-group">
+                <label class="labelstyle" >Firm Code</label>
+                <input type="text" class="form-control" [(ngModel)]="firm.code" name="code" autocomplete="off" maxlength="20" pattern="\d{16}" title="Credit card number" required="">
+            </div>
+            
+            <!-- <h5>Basic</h5>
+                <p-inputSwitch [(ngModel)]="checked1"></p-inputSwitch> -->
+
+            <h4 style="font-weight: bold; margin-left: 15px;">Is Active</h4>
+            <p-inputSwitch  [(ngModel)]="firm.IsActive" name="IsActive" class="col" (click)="!firm.IsActive"></p-inputSwitch>
+
+            <!-- <div class="form-inline">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text">$</span></div>
+                    <input type="text" class="form-control text-right" id="exampleInputAmount" placeholder="39">
+                    <div class="input-group-append"><span class="input-group-text">.00</span></div>
+                </div>
+            </div> -->
+            <hr>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <button type="reset" class="btn btn-primary btn-lg btn-block">Reset</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</form>

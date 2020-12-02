@@ -1,0 +1,11 @@
+.card {
+margin: 15px 18px ;
+cursor: pointer;
+}
+.card-header{
+    font-size: 20px;
+    text-align: center;
+}
+img{
+    margin-left: 25%;
+}

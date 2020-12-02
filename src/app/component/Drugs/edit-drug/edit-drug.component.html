@@ -1,0 +1,106 @@
+<img src="../../../assets/coco/Caps.jpg" class="row"
+  style="height: 100%; width: 45%; float: right; margin-top: 20px; margin-right: 20px;">
+
+<form (ngSubmit)="SubmitDrug()" style="margin-left: 20PX; margin-top: 20px;">
+  <div class="form-group">
+    <label for="TradeName" i18n>TradeName</label>
+    <input type="text" [(ngModel)]="Drug.tradeName"  required minlength="3" name="TradeName" id="TradeName" class="form-control"
+      placeholder="" aria-describedby="helpId">
+    <!-- <small [hidden]="tradeName.valid || tradeName.untouched" id="helpId" class="text-muted">Name must be more than 3 letters</small> -->
+  </div>
+  <div class="form-group">
+    <label for="GenericName" i18n>GenericName</label>
+    <input type="text" [(ngModel)]="Drug.genericName" required min="1" name="genericName" id="genericName"
+      class="form-control" placeholder="genericName" aria-describedby="helpId">
+    <small id="helpId" class="text-muted">Help text</small>
+  </div>
+  <div class="form-group">
+    <label for="code" i18n>Code</label>
+    <input type="text" [(ngModel)]="Drug.code" name="code" required min="1" id="code" class="form-control"
+      placeholder="code" aria-describedby="helpId">
+    <small id="helpId" class="text-muted">Help text</small>
+  </div>
+  <div class="form-group">
+    <label for="strength" i18n>Strength</label>
+    <input type="number" [(ngModel)]="Drug.strength" name="strength" required id="strength" class="form-control"
+      placeholder="strength" aria-describedby="helpId">
+    <small id="helpId" class="text-muted">Help text</small>
+  </div>
+  <div class="form-group">
+    <label for="pack" i18n>Pack</label>
+    <input type="number" [(ngModel)]="Drug.pack" name="pack" required min="1" id="pack" class="form-control"
+      placeholder="pack" aria-describedby="helpId">
+    <small id="helpId" class="text-muted">Help text</small>
+  </div>
+  <div class="form-group">
+    <label for="reOrderLevel" i18n>ReOrderLevel</label>
+    <input type="text" [(ngModel)]="Drug.reOrderLevel" name="reOrderLevel" required min="1" id="reOrderLevel"
+      class="form-control" placeholder="ReOrderLevel" aria-describedby="helpId">
+    <small id="helpId" class="text-muted">Help text</small>
+  </div>
+  <div class="form-group">
+    <label for="license" i18n>License</label>
+    <input type="text" [(ngModel)]="Drug.license" name="license" required min="1" id="license" class="form-control"
+      placeholder="license" aria-describedby="helpId">
+    <small id="helpId" class="text-muted">Help text</small>
+  </div>
+
+  <div class="form-group">
+    <label for="barCode" i18n>BarCode</label>
+    <input type="text" [(ngModel)]="Drug.barCode" name="barCode" required min="1" id="barCode" class="form-control"
+      placeholder="barCode" aria-describedby="helpId">
+    <small id="helpId" class="text-muted">Help text</small>
+  </div>
+
+  <div>
+    <label class="image-upload-container btn btn-bwm">
+      <span i18n>Select Image</span>
+      <input #imageInput
+             type="file"
+             accept="image/*"
+             (change)="onFileSelected($event.target.files)">
+    </label>
+  </div>
+  
+<label i18n>Select Thera Group</label>
+  <select [(ngModel)]="TheraGroupID" style="width: 50%;" name="sel2" class="form-control" (change)="OnChangeGroupID($event)">Profession
+    <option value="" selected disabled hidden>Profession</option>
+    <option *ngFor="let th of Thera" value="{{th.id}}">{{th.name}}</option>
+</select> 
+<label i18n>Select Thera Sub Group</label>
+<select   [(ngModel)]="Drug.theraSubGroupID" style="width: 50%;" name="sub" class="form-control" >SubGroup
+  <!-- <option value="" selected disabled hidden>SubGroup</option> -->
+  <option *ngFor="let sub of TheraSub" value="{{sub.id}}">{{sub.name}}</option>
+</select>
+<label i18n>Select Form Name</label>{{Drug.formID}}
+<select [(ngModel)]="Drug.formID" name="Form" style="width: 50%;" class="form-control">
+  <option value="" selected disabled hidden>Form</option>
+  <option *ngFor="let the of Form" value="{{the.id}}">{{the.name}}</option>
+</select> 
+
+<label i18n>Select Firm Name</label>
+<select [(ngModel)]="Drug.firmID" name="firm" style="width: 50%;" class="form-control">
+  <!-- <option value="" selected disabled hidden>firm</option> -->
+  <option *ngFor="let thhe of firm" value="{{thhe.id}}">{{thhe.name}}</option>
+</select> 
+
+<label i18n>Select Unit Name</label>
+<select [(ngModel)]="Drug.unitID" name="Unit" style="width: 50%;" class="form-control">
+  <option value="" selected disabled hidden>Unit</option>
+  <option *ngFor="let u of Unit" value="{{u.id}}">{{u.name}}</option>
+</select> 
+
+<label i18n>Select Country Name</label>
+<select [(ngModel)]="Drug.countryID" name="Country" style="width: 50%;" class="form-control">
+  <option value="" selected disabled hidden>Country</option>
+  <option *ngFor="let thee of Country" value="{{thee.id}}">{{thee.name}}</option>
+</select> 
+
+<label i18n>Select ROAD Name</label>
+<select [(ngModel)]="Drug.rOADID" name="ROAD" style="width: 50%;" class="form-control">
+  <option value="" selected disabled hidden>ROAD</option>
+  <option *ngFor="let theee of ROAD" value="{{theee.id}}">{{theee.name}}</option>
+</select>
+
+  <button type="submit" [disabled]="" style="margin-top: 20px;" class="btn btn-primary" i18n>Submit</button>
+</form>

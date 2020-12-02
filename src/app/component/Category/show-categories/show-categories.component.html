@@ -1,0 +1,210 @@
+<p-toast></p-toast>
+<p-toast position="top-left" key="tl"></p-toast>
+<p-toast position="top-center" key="tc"></p-toast>
+<p-toast position="bottom-center" key="bc"></p-toast>
+
+<p-toast position="bottom-center" key="c" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+                </div>
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
+
+<p-table class="container" #dt [value]="categories" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customers" [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+    [globalFilterFields]="['name','country.name','representative.name','status']">
+    <ng-template pTemplate="caption">
+        <div class="table-header">
+
+    <p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Add Category" i18n></p-button>
+
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th  style="color: black; font-size: large;" pSortableColumn="name" i18n>Name<p-sortIcon field="name"></p-sortIcon></th>
+            <th  style="color: black; font-size: large;" pSortableColumn="nameAR" i18n>Name Ar<p-sortIcon field="nameAR"></p-sortIcon></th>
+            <th style="color: black; font-size: large;"  pSortableColumn="description" i18n>Description<p-sortIcon field="description"></p-sortIcon></th>
+            <th style="color: black; font-size: large;" i18n>descriptionAR</th>
+            <th style="color: black; font-size: large;" i18n>Edit</th>
+            <th style="color: black; font-size: large;" i18n>Delete</th>
+        </tr>
+        <tr>
+            <th>
+                <input pInputText style="font-size: 12px; width: 110px;" type="text"
+                    (input)="dt.filter($event.target.value, 'name', 'startsWith')" placeholder="Search by name"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText style="font-size: 12px; width: 120px;" type="text"
+                    (input)="dt.filter($event.target.value, 'nameAR', 'startsWith')" placeholder="Search by nameAR"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText style="font-size: 12px; width: 120px;" type="text"
+                    (input)="dt.filter($event.target.value, 'description', 'startsWith')"
+                    placeholder="Search by description" class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText style="font-size: 12px; width: 120px;" type="text"
+                    (input)="dt.filter($event.target.value, 'descriptionAR', 'startsWith')"
+                    placeholder="Search by descriptionAR" class="p-column-filter">
+            </th>
+            <th>
+                <span style="font-size: 12px; width: 120px;" type="text"
+                   
+                ></span>
+            </th>
+            <th>
+                <span style="font-size: 12px; width: 120px;" type="text"
+                   
+                ></span>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-category>
+        <tr>
+            <td>
+                {{category.name}}
+            </td>
+            <td>
+                {{category.nameAR}}
+            </td>
+            <td>
+                {{category.description}}
+
+            </td>
+            <td>
+                {{category.descriptionAR}}
+            </td>
+
+            <td>
+                <mat-icon color="warn" style="cursor: pointer;" (click)="editModalDialog(category.id)"i18n>launch</mat-icon>
+            <!-- <p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Add Category"></p-button> -->
+                <!-- <mat-icon>delete</mat-icon> -->
+                <!-- <mat-icon>delete_outline</mat-icon> -->
+                <!-- <span class="material-icons">face</span> -->
+            </td>
+            <td>
+                <mat-icon color="primary" style="cursor: pointer;" pRipple class="ui-button-warning"
+                    (click)="confirm(category.id)" i18n>delete_outline</mat-icon>
+                <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+                <!-- <span class="material-icons">face</span> -->
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="6" i18n>No customers found.</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+
+
+<p-dialog header="" [(visible)]="displayModal" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="p-grid p-fluid">
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text"[(ngModel)]="category.name" pInputText placeholder="Name English">         
+            </div>
+        </div>
+        
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">AR</span>
+                <input type="text" pInputText placeholder="Name Arabic" [(ngModel)]="category.nameAR">   
+                <!-- <span class="p-inputgroup-addon">.00</span>       -->
+            </div>
+        </div>
+                
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <!-- <span class="p-inputgroup-addon">www</span> -->
+                <input type="text" pInputText placeholder="Description Eng" [(ngModel)]="category.description">      
+            </div>
+        </div>
+
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <!-- <span class="p-inputgroup-addon">www</span> -->
+                <span class="p-inputgroup-addon">AR</span>
+                <input type="text" pInputText placeholder="Description Ar" [(ngModel)]="category.descriptionAR">      
+            </div>
+        </div>
+    </div>
+    <ng-template pTemplate="footer" >
+        <p-button icon="pi pi-check" (click)="addNewCategory()" label="Yes" styleClass="p-button-text" i18n></p-button>
+        <p-button icon="pi pi-times" (click)="displayModal=false" label="No" i18n></p-button>
+    </ng-template>
+</p-dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p-dialog header="" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="p-grid p-fluid">
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text"[(ngModel)]="category.name" pInputText placeholder="Name English">         
+            </div>
+        </div>
+        
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">AR</span>
+                <input type="text" pInputText placeholder="Name Arabic" [(ngModel)]="category.nameAR">   
+                <!-- <span class="p-inputgroup-addon">.00</span>        -->
+             </div>
+        </div>
+                
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          
+                <input type="text" pInputText placeholder="Description Eng" [(ngModel)]="category.description">      
+            </div>
+        </div>
+
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+               
+                <span class="p-inputgroup-addon">AR</span>
+                <input type="text" pInputText placeholder="Description Ar" [(ngModel)]="category.descriptionAR">      
+            </div>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="EditCategory(category.id)" label="Yes" styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-times" (click)="displayBasic=false" label="No"></p-button>
+    </ng-template>
+</p-dialog> 
+ 

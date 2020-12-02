@@ -1,0 +1,50 @@
+<div class="row">
+    <div class=" col card text-white bg-success mb-3" style="max-width: 18rem;" [routerLink]="['showdrug']" showdrug>
+        <div class="card-header" [translate]="'Pharmacy.DRUGS'">DRUGS</div>
+        <div class="card-body">
+            <img src="../../../assets/coco/medicine (1).png" width="100px" alt="pharmacy">
+        </div>
+    </div>
+    <div class="col card text-white bg-danger mb-3" style="max-width: 18rem;" [routerLink]="['AllPharmacySupAdmin']">
+        <div class="card-header" [translate]="'Pharmacy.PHARMACIES'"> PHARMACIES</div>
+        <div class="card-body">
+            <!-- <h5 class="card-title">Info card title</h5> -->
+            <img src="../../../assets/coco/medicinee.png" width="100px" alt="pharmacy">
+            <!-- <div class="card-text">All Branches Of xxx Pharmacy.</div> -->
+        </div>
+    </div>
+    <div class="col card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header" [translate]="'Pharmacy.ORDERS'">ORDERS</div>
+        <div class="card-body">
+            <img src="../../../assets/coco/checklist.png" width="100px" alt="pharmacy">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col card bg-warning mb-3" style="max-width: 18rem;" [routerLink]="['employee']">
+        <div class="card-header" [translate]="'Pharmacy.EMPLOYEES'">EMPLOYEES</div>
+        <div class="card-body">
+            <img src="../../../assets/coco/employee.png" width="100px" alt="pharmacy">
+        </div>
+    </div>
+    <div class=" col card text-white bg-primary mb-3" style="max-width: 18rem;" [routerLink]="['allusers']">
+        <div class="card-header" [translate]="'Pharmacy.USERS'" [routerLink]="['allusers']">USERS</div>
+        <div class="card-body">
+            <img src="../../../assets/coco/officer.png" width="100px" alt="pharmacy">
+
+        </div>
+    </div>
+    <div class="col card text-white bg-info mb-3" style="max-width: 18rem;" [routerLink]="['suppliers']">
+        <div class="card-header" [translate]="'Pharmacy.SUPPLIERS'">SUPPLIERS</div>
+        <div class="card-body">
+            <img src="../../../assets/coco/forklift.png" width="100px" alt="pharmacy">
+        </div>
+    </div>
+</div>
+<div class="col card bg-info mb-3" style="max-width: 18rem;" [routerLink]="['patients']">
+    <div class="card-header" [translate]="'Pharmacy.PATIENTS'">PATIENTS</div>
+    <div class="card-body">
+        <img src="../../../assets/coco/patient.png" width="100px" alt="">
+    </div>
+</div>

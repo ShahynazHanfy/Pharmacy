@@ -1,0 +1,114 @@
+
+<p-table #dt [value]="pharmacies" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+[rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customers" [paginator]="true"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+[globalFilterFields]="['name','country.name','representative.name','status']">
+<ng-template pTemplate="caption">
+
+    <div class="table-header row">
+        <div class="col">
+            <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()"
+            class="p-button-warning p-mr-2" pTooltip="PDF" tooltipPosition="bottom"
+            ></button>
+        </div>
+    </div>
+</ng-template>
+<ng-template pTemplate="header">
+    <tr>
+        <th>Pharmacy Name</th>
+        <th>Telephone</th>
+        <th>Email</th>
+        <th>Location</th>
+    </tr>
+    <tr>
+        <th>
+            <input pInputText type="text" style="width: 170px;"
+                (input)="dt.filter($event.target.value, 'tradeName', 'startsWith')" placeholder="Search by Name"
+                class="p-column-filter">
+        </th>
+        <th>
+            <p-dropdown [options]="representatives" (onChange)="onRepresentativeChange($event)"
+                styleClass="p-column-filter" optionLabel="name" styleClass="p-column-filter"
+                placeholder="Select a Status" [showClear]="true">
+                <ng-template let-option pTemplate="item">
+                    <div class="p-multiselect-representative-option">
+                        <img [alt]="option.label" src="../../../../assets/coco/{{option.value.image}}" width="32"
+                            style="vertical-align: middle" />
+                        <span class="p-ml-1">{{option.label}}</span>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </th>
+
+        <th>
+            <input pInputText type="text" (input)="dt.filter($event.target.value, 'price', 'startsWith')"
+                placeholder="Search by Price" class="p-column-filter">
+        </th>
+        <th></th>
+
+   
+    </tr>
+</ng-template>
+<ng-template pTemplate="body" let-pharmacy>
+    <tr>
+        <td>
+            {{pharmacy.name}}
+        </td>
+        <td>
+            {{pharmacy.telephone}}
+        </td>
+        <td>
+            {{pharmacy.email}}
+        </td>
+        <td>
+            {{pharmacy.location}}
+        </td>
+    </tr>
+</ng-template>
+<ng-template pTemplate="emptymessage">
+    <tr>
+        <td colspan="6">No Pharmacies found.</td>
+    </tr>
+</ng-template>
+</p-table>
+
+
+
+<div id="content" #content>
+
+</div>
+
+
+<!--  -->
+<table id="contentToConvert" class="table" hidden>
+    <thead>
+        <tr>
+            <th style="font-size: 15px;">Pharmacy Name </th>
+            <!-- <th style="font-size: 15px;">Drug Name</th> -->
+            <th style="font-size: 15px;">Telephone</th>
+            <th style="font-size: 15px;">Email</th>
+            <th style="font-size: 15px;">User Name</th>
+
+        </tr>
+    </thead>
+    <ng-container>
+        <tbody *ngFor="let doc of pharmacies; let i = index">
+            <tr>
+
+                <td class="alert alert-info">
+                    {{doc.name}}
+                </td>
+                <td class="alert alert-info">
+                    {{doc.telephone}}
+                </td>
+                <td class="alert alert-info">
+                    {{doc.email}}
+                </td>
+                <td class="alert alert-info" *ngFor = "let d of pharmacies.users">
+                    {{d.role}}
+                </td>
+
+            </tr>
+        </tbody>
+    </ng-container>
+</table>

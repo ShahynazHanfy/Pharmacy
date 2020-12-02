@@ -1,0 +1,105 @@
+<br>
+<div class="card">
+    <br>
+    <div class="row">
+        <h5 style="margin-left: 3%; font-weight: bold;font-size: 25px; color: seagreen;">System Users</h5>
+        <div class="col-md-2 ml-5">
+            <button id="addEmpBtn" (click)="NewUserDialog()" class="btn btn-outline-primary btn-md btn-block">
+                <span class="pi pi-plus"></span> Add </button>
+        </div>
+    </div>
+    <p-table [value]="users" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>UserName</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Pharmacy Name</th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+            <tr>
+                <td>{{customer.userName}}</td>
+                <td>{{customer.email}}</td>
+                <td>{{customer.role}}</td>
+                <td>{{customer.pharmacyName}}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</div>
+
+<form (submit)="addNewUser()">
+    <p-dialog header="Add User" [(visible)]="NewLeaveDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
+
+        <div class="row">
+            <span class="col-md-3" for="employee">Employee</span>
+            <select (change)="onChange($event.target.value)" name="employee" class="form-control col-md-6">Employee
+                <option value="" selected disabled hidden>Employee</option>
+                <option *ngFor="let item of GetUnregisteredUsers" value="{{item.id}}">{{item.name}}</option>
+            </select>
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-md-3" for="Email">Email</span>
+            <br>
+            <input type="text" required [(ngModel)]="NewUser.email" disabled name="Email" class="col-md-6 form-control"
+                inputId="Email">
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-md-3" for="Password">Password</span>
+            <br>
+            <input disabled value="M@sTech146" type="text" disabled name="Password" class="col-md-6 form-control"
+                inputId="Password">
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-md-3" for="Password">Role</span>
+            <br>
+            <div class="p-field-radiobutton">
+                <div class="form-check">
+                    <input [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
+                     id="exampleRadios1" value="Admin" >
+                    <label class="form-check-label" for="exampleRadios1">
+                        Admin
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input [(ngModel)]="NewUser.role" class="form-check-input" checked type="radio" name="exampleRadios"
+                     id="exampleRadios2" value="User">
+                    <label class="form-check-label" for="exampleRadios2">
+                        User
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input [(ngModel)]="NewUser.role" class="form-check-input" checked type="radio" name="exampleRadios"
+                     id="exampleRadios2" value="Clerk">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Clerk
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input [(ngModel)]="NewUser.role" class="form-check-input" checked type="radio" name="exampleRadios"
+                     id="exampleRadios2" value="DataEntry">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Data Entry
+                    </label>
+                  </div>
+            </div>
+        </div>
+        <ng-template pTemplate="footer">
+            <p-button type="submit" icon="pi pi-check" label="Save" styleClass="p-button-text"></p-button>
+            <p-button icon="pi pi-times" (click)="displayBasic=false" label="No"></p-button>
+        </ng-template>
+
+    </p-dialog>
+</form>

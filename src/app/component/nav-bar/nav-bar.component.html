@@ -1,0 +1,97 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a style="margin-right: 30px;"><img src="../assets/coco/medicine.png" height="60px" alt=""></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <!-- <li class="nav-item active">
+        <a class="nav-link">Home</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link">PRODUCTS <span class="sr-only">(current)</span></a>
+      </li> -->
+
+      <!-- 
+      <li>
+        <select class="nav-link"> -->
+      <!-- <option *ngFor="let lang of translate.getLangs()" [value]="lang"
+            [selected]="lang === translate.currentLang">
+            {{ lang }}</option> -->
+      <!-- <option value="" disabled selected hidden>Drug Management</option>
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="vw">VW</option>
+        </select>
+      </li> -->
+      <!-- <li>
+      </li> -->
+      <p-menubar class="menu" [model]="items"></p-menubar>
+
+      <form class="form-inline my-2 my-lg-0" style="float: right; margin-left: 350px;">
+
+
+        <nav class="container mb-4 mt-4">
+          <div class="row">
+            <button class="btn btn-outline-success my-1 my-sm-0" type="submit" (click)="logout()"
+              [translate]="'Pharmacy.LogOut'"></button>
+            <div class="dropdown">
+              <label>
+                <select #langSelect (change)="translate.use(langSelect.value)"
+                  class="btn btn-primary dropdown-toggle btn-sm">
+                  <option *ngFor="let lang of translate .getLangs()" [value]="lang"
+                    [selected]="lang === translate.currentLang">{{ lang }}</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </nav>
+      </form>
+      <!-- 
+
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+          
+            <a class="navbar-brand" [routerLink]="['dashboard']" [translate]="'Pharmacy.dashboard'">DASHBOARD </a>
+            <a class="navbar-brand" [routerLink]="['addorder']"  [translate]="'Pharmacy.addorder'">ADD ORDER </a>
+
+          </div>
+          <div class="dropdown">
+            <label>
+              <select class="btn btn-primary dropdown-toggle btn-sm">
+                <option [translate]="'Pharmacy.DrugMangement'">Drug Mangement</option>
+                <option [translate]="'Pharmacy.Category'">Category</option>
+                <option [translate]="'Pharmacy.SubCategory'">SubCategory</option>
+                <option [translate]="'Pharmacy.Form'">Form</option>
+                <option [translate]="'Pharmacy.Firm'">Firm</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </nav>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <nav class="container mb-4 mt-4">
+        <div class="row">
+          <div class="col-9"></div>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="logout()" [translate]="'Pharmacy.LogOut'"></button>
+          <div class="dropdown">
+            <label>
+              <select #langSelect (change)="translate.use(langSelect.value)"
+                class="btn btn-primary dropdown-toggle btn-sm">
+                <option *ngFor="let lang of translate.getLangs()" [value]="lang"
+                  [selected]="lang === translate.currentLang">{{ lang }}</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </nav>
+    
+  </div>
+</nav>
+
+ -->

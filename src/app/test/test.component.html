@@ -1,0 +1,25 @@
+
+<p-table #dt [columns]="cols" [value]="drugs" selectionMode="multiple" [(selection)]="SelecteDrugs">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+            <button type="button" pButton pRipple icon="pi pi-file-o" (click)="dt.exportCSV()" class="p-mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+            <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-mr-2"  pTooltip="XLS" tooltipPosition="bottom" style="margin-left: 10px;"></button>
+            <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning p-mr-2" pTooltip="PDF" tooltipPosition="bottom" style="margin-left: 10px;"></button>
+            <button type="button" pButton pRipple icon="pi pi-filter" style="float: right;" (click)="dt.exportCSV({selectionOnly:true})" class="p-button-info p-ml-auto" pTooltip="Selection Only" tooltipPosition="bottom"></button>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

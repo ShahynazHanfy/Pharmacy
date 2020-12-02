@@ -1,0 +1,44 @@
+<!-- <app-nav-bar></app-nav-bar> -->
+
+<form [formGroup]="loginForm" (ngSubmit)="getData()">
+  <div id="login-box">
+    <div class="left">
+      <h1 style="margin-bottom: 50px;">Login</h1>
+
+      <input type="text" name="username" id="username" formControlName="username" placeholder="Username"
+        [(ngModel)]="username" />
+
+      <div *ngIf="loginForm.controls['username'].touched &&
+      loginForm.controls['username'].invalid" class="alert-danger">
+        <div *ngIf="loginForm.controls['username'].errors &&
+        loginForm.controls['username'].errors.required">
+          First name is required.</div>
+      </div>
+
+      <!-- <input type="text" name="email" placeholder="E-mail" /> -->
+      <input type="password" name="password" placeholder="Password" [(ngModel)]="password" formControlName="password" />
+      <div *ngIf="loginForm.controls['password'].touched &&
+      loginForm.controls['password'].invalid" 
+      class="alert-danger">
+      <div *ngIf="loginForm.controls['password'].errors &&
+      loginForm.controls['password'].errors.required">
+          Last name is required.</div>
+  </div>
+      <!-- <input type="password" name="password2" placeholder="Retype password" /> -->
+      <!-- <input id="rememberChkBox" type="checkbox"> Remember Me -->
+      <!-- <button type="submit"   [disabled]=></button> -->
+      <button id="sub" pButton type="submit" name="signup_submit" value="Sign me up" icon="pi pi-check" [disabled]="!loginForm.valid"  label="Sign Me Up"></button>
+      <!-- <button type="submit"
+      >Submit</button> -->
+    </div>
+
+    <div class="right">
+      <!-- <span class="loginwith">Sign in with<br />social network</span>
+      <button class="social-signin facebook">Log in with facebook</button>
+      <button class="social-signin twitter">Log in with Twitter</button>
+      <button class="social-signin google">Log in with Google+</button> -->
+    </div>
+  </div>
+  
+</form>
+

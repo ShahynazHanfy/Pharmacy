@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="f9e88a3b58d30f3efbfd2bd26700d1505fc8c387" datatype="html">
+        <source>TradeName</source>
+        <target>اسم الدواء</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">95</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fd80b3ed928560dc03559012646183bd4f97add9" datatype="html">
+        <source>GenericName</source>
+        <target> اسم الدواء التجاري</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="68572de01b84c678be4bf8a27b990ecac2f41ce9" datatype="html">
+        <source>Code</source>
+        <target>كود الدواء</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="240fe9736823deb2a412ca570a41b0bc4c1c5ec7" datatype="html">
+        <source>Strength</source>
+        <target>التركيز</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="38274d19d1d2f5e7f009a3a603ffaac1721529af" datatype="html">
+        <source>Pack</source>
+        <target>كم/شريط/عبوه</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">121</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="192580b49e4c672b820d43ba9e111d89f0b74c59" datatype="html">
+        <source>ReOrderLevel</source>
+        <target>معدل انتهاء الكميه</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">129</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/show-drug/show-drug.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b645c979713a8efefe32b749060dfdc9c2bd8308" datatype="html">
+        <source>BarCode</source>
+        <target>بار كود</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="15bdfa7e753e80e9f158a0d23194cb33eb63088f" datatype="html">
+        <source>License</source>
+        <target>تحميل ملف</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">147</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4b3972c3e9485218508a95f7a4ce7758e3f09ced" datatype="html">
+        <source>Upload</source>
+        <target>تحميل</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">165</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bb528e7b7c1bc3bd35f59bdb074917537484ea6b" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{imgName}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">169</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="49dec96923d20a766cbd8c025f937aa678a21a92" datatype="html">
+        <source>Select Thera Group</source>
+        <target>اختر من مجموعه الدوائي</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">176</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0bfa6cfddbb3f17c42b6e2eed916043f7d414730" datatype="html">
+        <source>Select Thera Sub Group</source>
+        <target> اختر من مجموعه الدوائيه الفرعيه</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">183</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5f242dd7a96de58777d1721363f888f3b9ef93db" datatype="html">
+        <source>Select Form Name</source>
+        <target> اختر الشكل الدوائي</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">190</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="83433e7bb1aa108bba86d19e921943eed820d161" datatype="html">
+        <source>Select Firm Name</source>
+        <target> اختر اسم الشركه</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">200</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6789e9333a4307576720962514cc1d3cfb80f015" datatype="html">
+        <source>Select Unit Name</source>
+        <target> اختر اسم الوحده </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">207</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1d53ce587c9e9afa979e999031821f6b17433482" datatype="html">
+        <source>Select Country Name</source>
+        <target> اختر اسم الدوله </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">217</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="74cb69e2cc7e6ce15deda898fc7eea858558392b" datatype="html">
+        <source>Select ROAD Name</source>
+        <target> اختر اسم الوحده </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">224</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="71c77bb8cecdf11ec3eead24dd1ba506573fa9cd" datatype="html">
+        <source>Submit</source>
+        <target> حفظ </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/add-drug/add-drug.component.html</context>
+          <context context-type="linenumber">231</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="14b5a40b6c0e747ff91885cf9d925c7f6423cf6f" datatype="html">
+        <source>Add New Drug</source>
+        <target> اضافه دواء جديد</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/show-drug/show-drug.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a38d34b98a850ad57a4c28e822387b94e92fec40" datatype="html">
+        <source>TradeName<x id="START_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;p-sortIcon&gt;"/><x id="CLOSE_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;/p-sortIcon&gt;"/>
+            </source>
+        <target>اسم الدواء</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/show-drug/show-drug.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1895ca75f5d2f02022b19acb1c981107eaee241b" datatype="html">
+        <source>Code<x id="START_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;p-sortIcon&gt;"/><x id="CLOSE_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;/p-sortIcon&gt;"/>
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/show-drug/show-drug.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c9135525c5450abf2aa7f5363b9583269d21f700" datatype="html">
+        <source>Pack<x id="START_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;p-sortIcon&gt;"/><x id="CLOSE_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;/p-sortIcon&gt;"/>
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/show-drug/show-drug.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2af60260e3d4d88d55a3b5120d34b5fe53e5bac6" datatype="html">
+        <source>image</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/show-drug/show-drug.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="047f50bc5b5d17b5bec0196355953e1a5c590ddb" datatype="html">
+        <source>Update</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/show-drug/show-drug.component.html</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="826b25211922a1b46436589233cb6f1a163d89b7" datatype="html">
+        <source>Delete</source>
+        <target> حذف </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/show-drug/show-drug.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Category/show-categories/show-categories.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="008aa434373d4c9a685a7eda66a95984d3ce2e1b" datatype="html">
+        <source>launch</source>
+        <target> تعديل </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/show-drug/show-drug.component.html</context>
+          <context context-type="linenumber">134</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Category/show-categories/show-categories.component.html</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="57bfac85c20345a618e9f2198a224a7f55b6ae4f" datatype="html">
+        <source>delete_outline</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/show-drug/show-drug.component.html</context>
+          <context context-type="linenumber">138</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Category/show-categories/show-categories.component.html</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7520be840b684f99f2348c255901616ac6edf9b4" datatype="html">
+        <source>No customers found.</source>
+        <target> لا يوجد اي ادويه </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/show-drug/show-drug.component.html</context>
+          <context context-type="linenumber">147</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Category/show-categories/show-categories.component.html</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="104145858fd98b81923ca67d102a80be5c750074" datatype="html">
+        <source>Select Image</source>
+        <target> تحميل صوره </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Drugs/edit-drug/edit-drug.component.html</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0acbf265f31c8f851163a3f5bfe08e568eec9fab" datatype="html">
+        <source>Name<x id="START_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;p-sortIcon&gt;"/><x id="CLOSE_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
+        <target> الاسم بالانجليزيه </target>
+      
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Category/show-categories/show-categories.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7e5ca2367b620a9833be9b4437b0e7609bc15806" datatype="html">
+        <source>Name Ar<x id="START_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;p-sortIcon&gt;"/><x id="CLOSE_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
+        <target> الاسم بالعربيه </target>
+        
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Category/show-categories/show-categories.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6102e930fb60a60310cd87e5610fa32bfd0c8868" datatype="html">
+        <source>Description<x id="START_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;p-sortIcon&gt;"/><x id="CLOSE_TAG_P-SORTICON" ctype="x-p-sortIcon" equiv-text="&lt;/p-sortIcon&gt;"/></source>
+        <target> وصف تفصيلي للمنتج بالانجليزيه</target>
+        
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Category/show-categories/show-categories.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d2a41b6e5fae301604cc760ad7d0c7a1784756f7" datatype="html">
+        <source>descriptionAR</source>
+        <target> وصف تفصيلي بالعربيه </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Category/show-categories/show-categories.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="28f86ffd419b869711aa13f5e5ff54be6d70731c" datatype="html">
+        <source>Edit</source>
+        <target> تعديل </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/component/Category/show-categories/show-categories.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

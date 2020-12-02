@@ -1,0 +1,21 @@
+button {
+    min-width: 15rem;
+}
+
+.product-image {
+    width: 50px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+}
+h3{
+    font-size: 40px;
+    /* margin: 50px 50px; */
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: rgb(58, 156, 12);
+}
+.labelstyle{
+    font-size: 23px;
+    /* color: chocolate; */
+    font-weight: bold;
+}

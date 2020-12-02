@@ -1,0 +1,30 @@
+table {
+    margin-top: 15px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .export_icon{
+    margin-left: 10px;
+  }
+  th{
+    color: rgb(20, 100, 10);
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .header th{
+    background-color: rgb(180, 228, 228);
+  }
+  tr td {
+    text-align: center;
+  }
