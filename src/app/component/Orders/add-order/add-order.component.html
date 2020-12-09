@@ -2,9 +2,7 @@
     <!-- <h5>ADDING ORDERS</h5> -->
     <p-tabView>
         <p-tabPanel header="TRANSFER ORDER" leftIcon="pi pi-play" rightIcon="pi pi-pause" tooltip="1990">
-
-            <div>
-                <!-- <h5>Addons</h5> -->
+            <!-- <div>
                 <div class="p-grid p-fluid row">
                     <div class="p-col-12 p-md-4">
                         <p-dropdown [options]="ExistDrugs" [(ngModel)]="selectedDrug" optionLabel="tradeName"
@@ -14,14 +12,13 @@
                                     <img src="http://localhost:51563/api/drugs/getImage/{{selectedDrug.img}}" alt=""
                                         [class]="'flag flag-' + selectedDrug.tradeName.toLowerCase()"
                                         style="width: 90px ;height: 50px;">
-                                    <!-- <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + selectedDrug.tradeName.toLowerCase()" /> -->
+                                  
                                     <div>{{selectedDrug.tradeName}}</div>
                                 </div>
                             </ng-template>
                             <ng-template let-item>
                                 <div class="country-item">
-                                    <!-- <img src="http://localhost:51563/api/drugs/getImage/{{item.img}}" [class]="'flag flag-' + country.tradeName.toLowerCase()" alt="">{{item.img}} -->
-                                    <!-- <img src=""  /> -->
+                                 
                                     <div>{{item.tradeName}}</div>
                                 </div>
                             </ng-template>
@@ -40,17 +37,11 @@
                             <span class="p-inputgroup-addon">Quantity</span>
                             <input type="text" pInputText placeholder="Quentity"
                                 [(ngModel)]="orderDetailObj.quentityInEachOrder">
-                            <!-- <span class="p-inputgroup-addon">.00</span> -->
+                
                         </div>
                     </div>
-                    <!-- <input type="button" name="AddToList" id="AddToList" value="Add To List" class="btn btn-primary"
-                        (click)="SaveToList()"> -->
-                    <button class="btn btn-primary" (click)="SaveToList()"
-                        style="width: 150px; height: 50px; margin-top: 23px; margin-left: 10px;">Save Drug To
-                        List</button>
                 </div>
             </div>
-
             <div class="row">
                 <div class="p-field p-col-12 p-md-4">
                     <label for="basic">Exp_Date</label>
@@ -61,29 +52,128 @@
                     <p-calendar inputId="basic" [(ngModel)]="orderDetailObj.exp_Date"></p-calendar>
                 </div>
             </div>
-            <div class="row">
+            <button class="btn btn-primary" (click)="SaveToList()"
+                style="width: 150px; height: 50px; margin-top: 23px; margin-left: 10px;">Save Drug To
+                List
+            </button> -->
+            <div style="margin-bottom: 20px;">
+                <p-button (click)="showBasicDialog2()" icon="pi pi-external-link" label="Add Drugs to Your Order">
+                </p-button>
 
+            </div>
+
+            <p-table [value]="orderDetails" [scrollable]="true" scrollHeight="300px">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Name</th>
+                        <th>Quentity</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Expire Date</th>
+                        <th>Delete</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr>
+                        <td>{{product.tradeName}}</td>
+                        <td>{{product.quentityInEachOrder}}</td>
+                        <td><img src="http://localhost:51563/api/drugs/getImage/{{product.img}}" [alt]="product.name"
+                                width="100" class="p-shadow-4" /></td>
+                        <td>{{product.price | currency:'USD'}}</td>
+                        <td>{{product.prod_Date}}</td>
+
+
+
+                        <td>
+                            <mat-icon color="primary" style="cursor: pointer;" pRipple class="ui-button-warning"
+                                (click)="deleteDrugFromList(product)">
+                                delete_outline</mat-icon>
+                            <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+                        </td>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{orderDetails ? orderDetails.length : 0 }} products.
+                    </div>
+                </ng-template>
+            </p-table>
+
+
+            <p-dialog header="DRUG LIST" [(visible)]="displayBasic2" [style]="{width: '50vw'}">
+                <span style="margin-left: 25px; font-weight: bold;font-size: 20px; color: cornflowerblue;"
+                    *ngIf="!selectedDrug">Select Drug</span>
+                <span style="margin-left: 25px; font-weight: bold;font-size: 20px; color: rgb(100, 15, 15);"
+                    *ngIf="selectedDrug"> Selected Drug</span>
+
+                <p-dropdown [options]="ExistDrugs" [(ngModel)]="selectedDrug" optionLabel="tradeName"
+                    class="p-col-12 p-md-4 dropdown" [filter]="true" [showClear]="true" placeholder="Select a Drug">
+                    <ng-template pTemplate="selectedItem">
+                        <div class="country-item country-item-value" *ngIf="selectedDrug">
+                            <img src="http://localhost:51563/api/drugs/getImage/{{selectedDrug.img}}" alt=""
+                                [class]="'flag flag-' + selectedDrug.tradeName.toLowerCase()"
+                                style="width: 150px ;height: 50px;">
+                            <div>{{selectedDrug.tradeName}}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+                <div class="p-col-10 p-md-4">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">Price</span>
+                        <input type="text" pInputText placeholder="Price" [(ngModel)]="orderDetailObj.price">
+                        <span class="p-inputgroup-addon">.00</span>
+                    </div>
+                </div>
+                <div class="p-col-12 p-md-4">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">Quantity</span>
+                        <input type="text" pInputText placeholder="Quentity"
+                            [(ngModel)]="orderDetailObj.quentityInEachOrder">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="p-col-10 p-md-4">
+                            <div class="p-inputgroup">
+                                <span class="p-inputgroup-addon">Prod_Date</span>
+                                <p-calendar inputId="basic" [(ngModel)]="orderDetailObj.prod_Date"></p-calendar>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-col-10 p-md-4">
+                            <div class="p-inputgroup">
+                                <span class="p-inputgroup-addon">Exp_Date</span>
+                                <p-calendar inputId="basic" [(ngModel)]="orderDetailObj.exp_Date"></p-calendar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ng-template pTemplate="footer">
+                    <p-button icon="pi pi-check" (click)="SaveToList()" label="Ok" styleClass="p-button-text">
+                    </p-button>
+                </ng-template>
+            </p-dialog>
+            <div class="row" style="border: 2px solid rgb(172, 60, 60); border-radius: 5px; margin-top: 15px;">
                 <div class="col">
-                    <label for="" style="color: rgb(180, 15, 15); font-size: 30px;">From</label>
-                    <div class="p-field-radiobutton">
+                    <label for="" style="color: rgb(180, 15, 15); font-size: 30px; margin-top: 10px;">From</label>
+                    <div class="p-field-radiobutton" style="margin-top: 20px;">
                         <p-radioButton name="Pharmacy" value="Pharmacy" [(ngModel)]="selectedsource">
                         </p-radioButton>
                         <label for="city3" style="margin-left: 10px;">Pharmacy</label>
                     </div>
-                    <div class="p-field-radiobutton">
-                        <p-radioButton name="Supplier" value="Supplier" [(ngModel)]="selectedsource">
-                        </p-radioButton>
-                        <label for="city4" style="margin-left: 10px;">Supplier</label>
-                    </div>
-                    <div class="p-field-radiobutton">
+                    <!-- <div class="p-field-radiobutton">
                         <p-radioButton name="Pledge" value="Pledge" [(ngModel)]="selectedsource">
                         </p-radioButton>
                         <label for="Pledge" style="margin-left: 10px;">Pledge</label>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="col">
-                    <label for="" style="color: rgb(180, 15, 15); font-size: 30px;">To</label>
+                    <label for="" style="color: rgb(180, 15, 15); font-size: 30px; margin-top: 10px;">To</label>
 
                     <div class="p-field-radiobutton">
                         <p-radioButton name="city" value="Pharmacy" [(ngModel)]="selectedTarget">
@@ -95,15 +185,15 @@
                         </p-radioButton>
                         <label for="city4" style="margin-left: 10px;">Supplier</label>
                     </div>
-                    <!-- <div class="p-field-radiobutton">
-                        <p-radioButton name="city" value="Pledge" [(ngModel)]="selectedTarget">
-                        </p-radioButton>
-                        <label for="city4" style="margin-left: 10px;">Pledge</label>
-                    </div> -->
                     <div class="p-field-radiobutton">
                         <p-radioButton name="city" value="patients" [(ngModel)]="selectedTarget">
                         </p-radioButton>
                         <label for="city4" style="margin-left: 10px;">patients</label>
+                    </div>
+                    <div class="p-field-radiobutton" style="margin-bottom: 10px;">
+                        <p-radioButton name="city" value="pledges" [(ngModel)]="selectedTarget">
+                        </p-radioButton>
+                        <label for="city4" style="margin-left: 10px;">Pledges</label>
                     </div>
                 </div>
             </div>
@@ -113,11 +203,6 @@
                         <div *ngIf="selectedsource =='Pharmacy'" class="col">
                             <label class="labelstyle" style="margin-top: 20px; font-weight: bold;">Select
                                 Pharmacy</label>
-                            <!-- 
-                        <select [(ngModel)]="order.pharmacyID" name="pharmacy" class="form-control">
-                            <option value="" selected disabled>The Name {{pharmacyName}}</option>
-                            <option *ngFor="let thhe of pharmacy" value="{{thhe.id}}">{{thhe.name}}</option>
-                        </select> -->
                             <div class="form-control" style="font-weight: bold;">{{pharmacyName}}</div>
 
                         </div>
@@ -135,23 +220,21 @@
                         <label class="labelstyle" style="margin-top: 20px; font-weight: bold;">Select Pharmacy
                             Name</label>
                         <select [(ngModel)]="order.pharmacyTargetID" name="pharmacy" class="form-control">
-                            <!-- <option value="" selected disabled>The Name {{pharmacyName}}</option> -->
                             <option *ngFor="let thhe of pharmacy" value="{{thhe.id}}">{{thhe.name}}</option>
                         </select>
                     </div>
-
-                    <!-- <div *ngIf="selectedTarget =='Pledge'" class="col" style="width: 50%;">
-                        <label class="labelstyle" style="margin-top: 20px; font-weight: bold;">Select Pledge
-                            Name</label>
-                        <select [(ngModel)]="order.pledgeID" name="pledge" class="form-control">
-                            <option *ngFor="let thhe of pledges" value="{{thhe.id}}">{{thhe.name}}</option>
-                        </select>
-                    </div> -->
                     <div *ngIf="selectedTarget =='patients'" class="col" style="width: 50%;">
                         <label class="labelstyle" style="margin-top: 20px; font-weight: bold;">Select Patients
                             Name</label>
                         <select [(ngModel)]="order.patientId" name="pledge" class="form-control">
                             <option *ngFor="let thhe of patients" value="{{thhe.id}}">{{thhe.name}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="selectedTarget =='pledges'" class="col" style="width: 50%; ">
+                        <label class="labelstyle" style="margin-top: 20px; font-weight: bold;">Select Pledges
+                            Name</label>
+                        <select [(ngModel)]="order.pledgeID" name="pledge" class="form-control">
+                            <option *ngFor="let thhe of pledges" value="{{thhe.id}}">{{thhe.name}}</option>
                         </select>
                     </div>
                 </div>
@@ -176,28 +259,19 @@
                 <div class="p-col-12 p-md-4">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon">../../</span>
-                        <!-- <input type="text" pInputText placeholder="Order Date" [(ngModel)]=""> -->
                         <p-calendar inputId="basic" [(ngModel)]="order.date"></p-calendar>
 
                     </div>
                 </div>
             </div>
-
-
-
-            <!-- <div class="form-group col">
-                <label for="number" class="labelstyle">Order Number</label>
-                <input type="text" name="number" pKeyFilter="int" required min="1" id="number" class="form-control"
-                    placeholder="Order Number" aria-describedby="helpId">
-
-            </div> -->
             <div>
                 <textarea rows="5" cols="30" pInputTextarea placeholder="Comments" [(ngModel)]="order.comments"
                     style="margin-bottom: 20px; width: 100%;"></textarea>
             </div>
 
             <!-- <input type="button"  value="Add" > -->
-            <button (click)="saveOrderList()" class="btn btn-success">Save Order</button>
+            <!-- <button (click)="saveOrderList()" class="btn btn-success">Save Order</button> -->
+            <div id="testbutton" (click)="saveOrderList()"></div>
 
             <!-- <div class="p-field p-col-12 p-md-3">
                 <label for="horizontal">Horizontal with Step</label>
@@ -215,54 +289,10 @@
         </p-tabPanel>
 
 
-
+        <!-- 
         <p-tabPanel header="List Of Drugs" leftIcon="pi pi-user" rightIcon="pi pi-star" tooltip="1990">
-            <p-table [value]="orderDetails">
-                <ng-template pTemplate="caption">
-                    <div class="p-d-flex p-ai-center p-jc-between">
-                        Drugs
-                        <p-button icon="pi pi-refresh"></p-button>
-                    </div>
-                </ng-template>
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>Name</th>
-                        <th>Quentity</th>
-                        <th>Image</th>
-                        <th>Price</th>
-                        <th>Expire Date</th>
-                        <th>Delete</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-product>
-                    <tr>
-                        <td>{{product.tradeName}}</td>
-                        <td>{{product.quentityInEachOrder}}</td>
-                        <td><img src="http://localhost:51563/api/drugs/getImage/{{product.img}}" [alt]="product.name"
-                                width="100" class="p-shadow-4" /></td>
-                        <td>{{product.price | currency:'USD'}}</td>
-                        <td>{{product.prod_Date}}</td>
-
-
-                        <!-- <td><p-rating  [readonly]="true" [cancel]="false"></p-rating></td> -->
-                        <td>
-                            <mat-icon color="primary" style="cursor: pointer;" pRipple class="ui-button-warning"
-                                (click)="deleteDrugFromList(product)">
-                                delete_outline</mat-icon>
-                            <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
-                            <!-- <button type="button" (click)="confirm1()" pButton icon="pi pi-check" label="Confirm"></button> -->
-                            <!-- <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog> -->
-                        </td>
-                        <!-- <td><span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span></td> -->
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="summary">
-                    <div class="p-d-flex p-ai-center p-jc-between">
-                        In total there are {{orderDetails ? orderDetails.length : 0 }} products.
-                    </div>
-                </ng-template>
-            </p-table>
-        </p-tabPanel>
+            
+        </p-tabPanel> -->
 
 
 
@@ -318,12 +348,13 @@
                         <p class="col" *ngIf="item.pharmacyTargetId != 0 "
                             style="color: rgb(170, 30, 30); font-weight: bold; font-size: 20px;">Delivered To
                             <span style="color: rgb(28, 6, 153);"> {{item.pharmacyTarget}}</span> Pharmacy</p>
-                        <p class="col" *ngIf="item.pledgeId != null && item.supplierID==null "
+                        <p class="col" *ngIf="item.pledgeId != null && item.supplierID==null && item.patientId!=null"
                             style="color: rgb(170, 30, 30); font-weight: bold; font-size: 20px;">Delivered To
                             <span style="color: rgb(28, 6, 153);"> {{item.pledgeName}}</span> Pledge</p>
-                        <p class="col" *ngIf="item.patientId != null && item.supplierID ==null && item.pharmacyTargetId==0 "
+                        <p class="col"
+                            *ngIf="item.patientId != null && item.pledgeId == null&& item.supplierID ==null && item.pharmacyTargetId==0 "
                             style="color: rgb(170, 30, 30); font-weight: bold; font-size: 20px;">Delivered To
-                            <span style="color: rgb(28, 6, 153);"> {{item.patientName}}</span> ""Patient""</p>
+                            <span style="color: rgb(28, 6, 153);"> {{item.patientName}}</span> Patient</p>
                         <p class="col" *ngIf="item.supplierID != null"
                             style="color: rgb(170, 30, 30); font-weight: bold; font-size: 20px;">Delivered To
                             <span style="color: rgb(28, 6, 153);"> {{item.supplierName}}</span> Company</p>
@@ -390,7 +421,7 @@
             </div>
         </p-tabPanel>
 
-        <p-tabPanel header="CONFIRMIED DELIVERED ORDERS" leftIcon="pi pi-user" rightIcon="pi pi-star" tooltip="1990">
+        <p-tabPanel header="CONFIRMIED ORDERS" leftIcon="pi pi-user" rightIcon="pi pi-star" tooltip="1990">
             <div style="width: 100%;">
                 <p-accordion *ngFor="let item of orderVM2">
                     <div style="float: right; margin-left: 50px;" *ngIf="item.pendingStatus == false">

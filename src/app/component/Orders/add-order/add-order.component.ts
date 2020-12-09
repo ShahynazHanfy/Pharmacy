@@ -12,14 +12,15 @@ import { Supplier } from 'src/app/Models/Supplier';
 import { PharmacyService } from '../../../services/pharmacy.service'
 import { DrugDetails } from '../../../Models/DrugDetails'
 import { OrderVM } from 'src/app/Models/OrderVM';
-import {DrugInEachOrder} from '../../../Models/DrugInEachOrder'
-import {TreeNode} from 'primeng/api'
-import {NodesService} from '../../../services/nodes.service';
-import {MenuItem} from 'primeng/api';
+import { DrugInEachOrder } from '../../../Models/DrugInEachOrder'
+import { TreeNode } from 'primeng/api'
+import { NodesService } from '../../../services/nodes.service';
+import { MenuItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-import {DialogService} from 'primeng/dynamicdialog';
-import {Patient} from '../../../Models/Patient'
+import { DialogService } from 'primeng/dynamicdialog';
+import { Patient } from '../../../Models/Patient'
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Router } from '@angular/router';
 ;
 
 
@@ -31,7 +32,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class AddOrderComponent implements OnInit {
 
-  ExistDrugs: any;
+  ExistDrugs: Drug[];
   drug: Drug
   drug1: Drug
   DrugAdded: Drug[]
@@ -50,53 +51,62 @@ export class AddOrderComponent implements OnInit {
   selectedsource: any = null
   selectedTarget: any = null
   drugDetailsObj: DrugDetails
-  pharmacyLoggedInIDInlocalStorage:Number
-  pharmacyObj:Pharmacy
-  pharmacyName:string
-  orderVM:OrderVM[]
-  orderVMObj:OrderVM
-  patients:Patient[]
-  drugInEachOrder:DrugInEachOrder[]
-  orderVM2:OrderVM[]
+  pharmacyLoggedInIDInlocalStorage: Number
+  pharmacyObj: Pharmacy
+  pharmacyName: string
+  orderVM: OrderVM[]
+  orderVMObj: OrderVM
+  patients: Patient[]
+  drugInEachOrder: DrugInEachOrder[]
+  orderVM2: OrderVM[]
   mainPharmacyDrugs: Drug[]
- 
+
 
   DrugExistAfterElementDeleted: Drug[]
+  displayBasic2: boolean;
   constructor(private drugService: DrugService,
     private nodeService: NodesService,
-    private orderService: OrderService, 
+    private orderService: OrderService,
     private pharmacyService: PharmacyService,
-    ) {
-
+    private routee: Router,
+  ) {
+    this.orderDetails = []
+    this.pharmacy = []
+    this.orderVM = []
+    this.orderVM2 = []
     this.DrugAdded = []
     this.newOrderDetails = []
     this.DrugExistAfterElementDeleted = []
     this.drugService.GetAll().subscribe(drugs => {
-    this.ExistDrugs = drugs, console.log(this.ExistDrugs),
-    this.DrugExistAfterElementDeleted = this.ExistDrugs
-    this.orderDetails = []
-    this.pharmacy = []
-    this.orderVM =[]
-    this.orderVM2 = []
+      this.ExistDrugs = drugs, 
+      console.log("exist drug",this.ExistDrugs)
+      for (var i = 0, len = this.orderDetails.length; i < len; i++) { 
+        for (var j = 0, len2 = this.ExistDrugs.length; j < len2; j++) { 
+            if (this.orderDetails[i].drugId === this.ExistDrugs[j].id) {
+              this.ExistDrugs.splice(j, 1);
+                len2=this.ExistDrugs.length;
+            }
+        }
+    }
     });
   }
   ngOnInit() {
     this.order = {
       code: '', comments: '', date: new Date(), description: '', number: 0,
-      pharmacyLoggedInID:0,pharmacySourceID:0,pharmacyTargetID:0,
-      pledgeID: 0, supplierID: 0, orderDetailList: [], id: 0,pendingStatus:true,patientId:0,IsDeleted:false
+      pharmacyLoggedInID: 0, pharmacySourceID: 0, pharmacyTargetID: 0,
+      pledgeID: 0, supplierID: 0, orderDetailList: [], id: 0, pendingStatus: true, patientId: 0, IsDeleted: false
 
     }
-   
- 
+
+
     this.drugDetailsObj = {
       IsActive: true, IsChecked: true, barCode: '', code: '', exp_Date: new Date(), id: 0, license: '', pack: '', price: 2,
       prod_Date: new Date(), quentity: 20, reOrderLevel: '', size: null, strength: '', drugID: 0, pharmacyLoggedInID: 0
     }
     this.newOrder = {
-      code: '', comments: '', date: new Date(), description: '', number: 0,pharmacyTargetID:0,pharmacySourceID:0,
-      pharmacyLoggedInID:0,
-      pledgeID: 0, supplierID: 0, orderDetailList: [], id: 0,pendingStatus:true,patientId:0,IsDeleted:false
+      code: '', comments: '', date: new Date(), description: '', number: 0, pharmacyTargetID: 0, pharmacySourceID: 0,
+      pharmacyLoggedInID: 0,
+      pledgeID: 0, supplierID: 0, orderDetailList: [], id: 0, pendingStatus: true, patientId: 0, IsDeleted: false
 
     }
     this.orderDetailObj = {
@@ -105,9 +115,9 @@ export class AddOrderComponent implements OnInit {
     this.pharmacyService.GetAllPharmacies()
       .subscribe(pharmacy => {
         this.pharmacy = pharmacy
-        console.log("pharmacies" + this.pharmacy)  
+        console.log("pharmacies" + this.pharmacy)
       })
-    
+
 
     this.drugService.GetAllPledges().subscribe(pledge => {
       this.pledges = pledge
@@ -115,31 +125,31 @@ export class AddOrderComponent implements OnInit {
     this.drugService.GetAllSuppliers().subscribe(supplier => {
       this.supplier = supplier
     })
-    this.pharmacyLoggedInIDInlocalStorage=Number(localStorage.getItem("pharmacyLoggedInID"))
+    this.pharmacyLoggedInIDInlocalStorage = Number(localStorage.getItem("pharmacyLoggedInID"))
 
-    this.pharmacyLoggedInIDInlocalStorage=Number(this.pharmacyLoggedInIDInlocalStorage)
+    this.pharmacyLoggedInIDInlocalStorage = Number(this.pharmacyLoggedInIDInlocalStorage)
 
-    this.orderService.GetAllOrdersByPharmacySourceId(this.pharmacyLoggedInIDInlocalStorage).subscribe(A=>{
+    this.orderService.GetAllOrdersByPharmacySourceId(this.pharmacyLoggedInIDInlocalStorage).subscribe(A => {
       this.orderVM = A //delivered from
     })
-    this.orderService.GetAllOrdersByPharmacyTargetId(this.pharmacyLoggedInIDInlocalStorage).subscribe(A=>{
+    this.orderService.GetAllOrdersByPharmacyTargetId(this.pharmacyLoggedInIDInlocalStorage).subscribe(A => {
       this.orderVM2 = A //sent to 
-      console.log("this is vm2www"+this.orderVM2+A)
+      console.log("this is vm2www" + this.orderVM2 + A)
     })
-    this.drugService.GetAllPledges().subscribe(pledges=>{
+    this.drugService.GetAllPledges().subscribe(pledges => {
       this.pledges = pledges
       console.log(this.pledges)
     })
-this.drugService.GetAllPatients().subscribe(e=>{
-  this.patients = e
-})
-    this.pharmacyService.getPharmacyById(this.pharmacyLoggedInIDInlocalStorage)
-    .subscribe(d=>{
-        this.pharmacyObj=d
-        console.log(this.pharmacyObj)
-        this.pharmacyName=this.pharmacyObj.name
-        console.log(this.pharmacyName)
+    this.drugService.GetAllPatients().subscribe(e => {
+      this.patients = e
     })
+    this.pharmacyService.getPharmacyById(this.pharmacyLoggedInIDInlocalStorage)
+      .subscribe(d => {
+        this.pharmacyObj = d
+        console.log(this.pharmacyObj)
+        this.pharmacyName = this.pharmacyObj.name
+        console.log(this.pharmacyName)
+      })
     this.drugService.GetAll()
       .subscribe(drugs => {
         this.ExistDrugs = drugs,
@@ -152,7 +162,7 @@ this.drugService.GetAllPatients().subscribe(e=>{
     console.log(this.DrugExistAfterElementDeleted)
   }
 
-  
+
   saveDrug(id) {
     console.log(id)
     this.drugService.getDrugByID(id).subscribe(drug => {
@@ -175,11 +185,13 @@ this.drugService.GetAllPatients().subscribe(e=>{
       }
     })
   }
-  ReloadPage(){
-    
+  ReloadPage() {
+
     console.log("hello")
   }
-  
+  showBasicDialog2() {
+    this.displayBasic2 = true;
+  }
 
   //   saveOrder(){
   //     // console.log(this.DrugAdded)
@@ -210,50 +222,48 @@ this.drugService.GetAllPatients().subscribe(e=>{
     console.log(this.selectedsource)
 
   }
-  
-  eventForPharmacy(){
+
+  eventForPharmacy() {
     console.log(this.selectedsource)
     console.log(this.pharmacyLoggedInIDInlocalStorage)
   }
 
   saveOrderList() {
-    this.orderDetailObj.quentityInEachOrder=Number(this.orderDetailObj.quentityInEachOrder)
-    this.order.pharmacyLoggedInID=this.pharmacyLoggedInIDInlocalStorage
+    this.orderDetailObj.quentityInEachOrder = Number(this.orderDetailObj.quentityInEachOrder)
+    this.order.pharmacyLoggedInID = this.pharmacyLoggedInIDInlocalStorage
     this.order.pharmacyLoggedInID = Number(this.order.pharmacyLoggedInID)
     this.order.patientId = Number(this.order.patientId)
 
-    this.order.pharmacyTargetID= Number(this.order.pharmacyTargetID)
+    this.order.pharmacyTargetID = Number(this.order.pharmacyTargetID)
     this.order.supplierID = Number(this.order.supplierID)
     this.order.pledgeID = Number(this.order.pledgeID)
     this.order.number = Number(this.order.number)
-    if (this.selectedsource=='Pharmacy') {
+    if (this.selectedsource == 'Pharmacy') {
       console.log("pharmacy")
-      this.order.pharmacySourceID=this.pharmacyLoggedInIDInlocalStorage
+      this.order.pharmacySourceID = this.pharmacyLoggedInIDInlocalStorage
     }
     this.order.orderDetailList = this.orderDetails
 
     this.orderService.insertOrder(this.order).subscribe(order => {
       console.log(order)
-      this.orderService.GetAllOrdersByPharmacySourceId(this.pharmacyLoggedInIDInlocalStorage).subscribe(A=>{
+      this.orderService.GetAllOrdersByPharmacySourceId(this.pharmacyLoggedInIDInlocalStorage).subscribe(A => {
         this.orderVM = A //delivered from
+        this.routee.navigate(['home/showdrug'])
       })
     })
 
-    console.log("ooorder",this.order)
+    console.log("ooorder", this.order)
   }
-  DeleteOrder(orderID :Number){
+  DeleteOrder(orderID: Number) {
     console.log(orderID)
-    this.orderService.SoftDeleteOrder(orderID).subscribe(e=>{
+    this.orderService.SoftDeleteOrder(orderID).subscribe(e => {
       console.log(e)
-      this.orderService.GetAllOrdersByPharmacyTargetId(this.pharmacyLoggedInIDInlocalStorage).subscribe(A=>{
+      this.orderService.GetAllOrdersByPharmacyTargetId(this.pharmacyLoggedInIDInlocalStorage).subscribe(A => {
         this.orderVM2 = A //sent to 
-        console.log("this is vm2www"+this.orderVM2+A)
+        console.log("this is vm2www" + this.orderVM2 + A)
       })
-      
     })
-
   }
-
   SaveToList() {
     this.orderDetailObj.drugId = this.selectedDrug.id
     this.orderDetailObj.img = this.selectedDrug.img
@@ -268,22 +278,34 @@ this.drugService.GetAllPatients().subscribe(e=>{
     this.orderDetailObj = {
       quentityInEachOrder: 0, price: 0, orderId: 0, drugId: 0, exp_Date: new Date(), prod_Date: new Date(), img: '', tradeName: ''
     }
+    this.drugService.GetAll().subscribe(drugs => {
+      this.ExistDrugs = drugs
+      console.log("exist drug",this.ExistDrugs)
+      for (var i = 0, len = this.orderDetails.length; i < len; i++) { 
+        for (var j = 0, len2 = this.ExistDrugs.length; j < len2; j++) { 
+            if (this.orderDetails[i].drugId === this.ExistDrugs[j].id) {
+              this.ExistDrugs.splice(j, 1);
+                len2=this.ExistDrugs.length;
+            }
+        }
+    }
+    });
+    this.displayBasic2 = false
   }
 
-  UpdatePendingStatus(orderId:Number){
-    this.orderService.UpdatePendingStatus(orderId).subscribe(A=>{
+  UpdatePendingStatus(orderId: Number) {
+    this.orderService.UpdatePendingStatus(orderId).subscribe(A => {
       console.log(A)
     })
-    this.orderService.GetAllOrdersByPharmacyTargetId(this.pharmacyLoggedInIDInlocalStorage).subscribe(A=>{
+    this.orderService.GetAllOrdersByPharmacyTargetId(this.pharmacyLoggedInIDInlocalStorage).subscribe(A => {
       A.forEach(element => {
-        if(element.isDeleted == false)
-        {
+        if (element.isDeleted == false) {
           this.orderVM2.push(element)
         }
       });
       // this.orderVM2 = A // List in (sent to) tab 
     })
-    
+
 
   }
 
@@ -291,7 +313,7 @@ this.drugService.GetAllPatients().subscribe(e=>{
     this.orderDetails.splice(this.orderDetails.indexOf(drugDetails), 1);
   }
 
-  
+
 
 
 }

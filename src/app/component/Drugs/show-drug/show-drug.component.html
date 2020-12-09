@@ -172,7 +172,7 @@
         <div class="table-header row">
             <div class="col">
                 <button type="button" style="margin-right: 10px;" [disabled]="" class="btn btn-primary"
-                    (click)="showModalDialog()" [translate]="'Pharmacy.ADDNEWdRUG'">Add New
+                    (click)="showModalDialog()" [translate]="'Pharmacy.ADDNEWdRUG'" *ngIf="EmpRole=='SuperAdmin'|| EmpRole=='Admin'">Add New
                     Drug</button>
 
                 <button type="button" style="margin-right: 10px;" *ngIf="EmpRole=='SuperAdmin'" [disabled]=""
@@ -181,13 +181,12 @@
 
                 <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()"
                     class="p-button-warning p-mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
-
             </div>
 
-            <div class="btn-group mr-4" style="width: 120px;">
+            <div class="btn-group mr-4" style="width: 120px;" *ngIf="role =='SuperAdmin'">
                 <!-- <button type="button" class="btn btn-outline-success" style="width: 150px;">Select pharmacy name</button> -->
                 <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown"
-                    *ngIf="role =='SuperAdmin'">
+                    >
                     <select [(ngModel)]="pharmacySelectedId" name="pharmacySelectedId" class="btn btn-outline-primary"
                         ngbDropdownToggle (change)="LoadDrugsBasedOnID($event)">
                         <option hidden [value]="pharmacyLoggedInID">{{pharmacyName}}</option>
@@ -281,12 +280,6 @@
                         aria-valuemin="0" aria-valuemax="10"></div>
                 </div>
             </td>
-            <!-- <td>
-                    <span [class]="'drugsDetailsObj-badge status-' + drugsDetailsObj.status">{{drugsDetailsObj.status}}</span>
-                </td> -->
-            <!-- <td>
-                    <p-progressBar [value]="customer.activity" [showValue]="false"></p-progressBar>
-                </td> -->
         </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

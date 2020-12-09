@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a style="margin-right: 30px;"><img src="../assets/coco/medicine.png" height="60px" alt=""></a>
-
+  <a style="margin-right: 30px;"><img src="../../../assets/coco/mostakbal.png" height="80px" alt=""></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
     aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -31,13 +30,12 @@
       </li> -->
       <p-menubar class="menu" [model]="items"></p-menubar>
 
-      <form class="form-inline my-2 my-lg-0" style="float: right; margin-left: 350px;">
+      <form class="form-inline my-2 my-lg-0" style="float: right; margin-left: 250px;">
 
 
         <nav class="container mb-4 mt-4">
           <div class="row">
-            <button class="btn btn-outline-success my-1 my-sm-0" type="submit" (click)="logout()"
-              [translate]="'Pharmacy.LogOut'"></button>
+           
             <div class="dropdown">
               <label>
                 <select #langSelect (change)="translate.use(langSelect.value)"
@@ -47,6 +45,8 @@
                 </select>
               </label>
             </div>
+            <button class="btn btn-outline-success my-2 my-sm-0" style="margin-left: 15px;" type="submit" (click)="logout()"
+            [translate]="'Pharmacy.LogOut'"></button>
           </div>
         </nav>
       </form>

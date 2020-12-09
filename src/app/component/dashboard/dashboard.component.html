@@ -42,9 +42,27 @@
         </div>
     </div>
 </div>
-<div class="col card bg-info mb-3" style="max-width: 18rem;" [routerLink]="['patients']">
-    <div class="card-header" [translate]="'Pharmacy.PATIENTS'">PATIENTS</div>
-    <div class="card-body">
-        <img src="../../../assets/coco/patient.png" width="100px" alt="">
+
+<div class="row">
+    <div class="col card bg-info mb-3" style="max-width: 18rem;" [routerLink]="['patients']">
+        <div class="card-header" [translate]="'Pharmacy.PATIENTS'">PATIENTS</div>
+        <div class="card-body">
+            <img src="../../../assets/coco/patient.png" width="100px" alt="">
+        </div>
+    </div>
+    <div class=" col card text-white bg-secondary mb-3" style="max-width: 18rem;" [routerLink]="['allusers']">
+        <div class="card-header" [translate]="'Pharmacy.USERS'" [routerLink]="['allusers']">USERS</div>
+        <div class="card-body">
+            <img src="../../../assets/coco/officer.png" width="100px" alt="pharmacy">
+
+        </div>
+    </div>
+    <div class="col card text-white bg-success mb-3" style="max-width: 18rem;" [routerLink]="['suppliers']">
+        <div class="card-header" [translate]="'Pharmacy.SUPPLIERS'">SUPPLIERS</div>
+        <div class="card-body">
+            <img src="../../../assets/coco/forklift.png" width="100px" alt="pharmacy">
+        </div>
     </div>
 </div>
+
+

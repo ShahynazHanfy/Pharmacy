@@ -11,12 +11,15 @@ import {PharmacyService} from '../../services/pharmacy.service'
 export class HomeComponent implements OnInit {
   constructor(private routee: Router,private pharmacyService:PharmacyService) { }
   pharmacyName:string
+  pharmacyType:string
+
   pharmacyID:Number
   ngOnInit() {
   this.pharmacyID=Number(localStorage.getItem("pharmacyLoggedInID"))
   this.pharmacyService.getPharmacyById(this.pharmacyID).subscribe(e=>{
     this.pharmacyName = e.name
-    console.log(this.pharmacyName)
+    this.pharmacyType = e.pharmacyType
+    console.log(this.pharmacyType)
   })
 
   }

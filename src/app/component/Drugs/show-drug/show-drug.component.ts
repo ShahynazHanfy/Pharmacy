@@ -220,7 +220,6 @@ export class ShowDrugComponent implements OnInit {
     //       } 
     //     });
     // })
-
     for (var i = 0, len = this.drugsDetailsViewModel.length; i < len; i++) { 
       for (var j = 0, len2 = this.drugs.length; j < len2; j++) { 
           if (this.drugsDetailsViewModel[i].drugID === this.drugs[j].id) {
