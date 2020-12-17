@@ -24,6 +24,8 @@ import {DashboardComponent} from '../app/component/dashboard/dashboard.component
 import {SuppliersComponent} from '../app/component/suppliers/suppliers.component'
 import {PatientsComponent} from '../app/component/patients/patients.component'
 import {AllPharmaciesSupADMINComponent} from '../app/component/all-pharmacies-sup-admin/all-pharmacies-sup-admin.component'
+import {AllOrdersComponent} from '../app/component/all-orders/all-orders.component'
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   // { path: '**', redirectTo: 'login'},
@@ -54,7 +56,7 @@ const routes: Routes = [
     { path: 'dashboard/allusers', component: AllUserComponent },  
     { path: 'dashboard/suppliers', component: SuppliersComponent },  
     { path: 'dashboard/patients', component: PatientsComponent },  
-
+    { path: 'dashboard/showAllOrders', component: AllOrdersComponent },
     { path: 'dashboard/showdrug', component: ShowDrugComponent, canActivate: [AuthGuard] },
     { path: 'dashboard/AllPharmacySupAdmin', component: AllPharmaciesSupADMINComponent },  
 

@@ -1,5 +1,5 @@
 <!-- <app-nav-bar></app-nav-bar> -->
-
+<p-toast position="top-center" key="tc"></p-toast>
 <form [formGroup]="loginForm" (ngSubmit)="getData()">
   <div id="login-box">
     <div class="left">
@@ -18,16 +18,16 @@
       <!-- <input type="text" name="email" placeholder="E-mail" /> -->
       <input type="password" name="password" placeholder="Password" [(ngModel)]="password" formControlName="password" />
       <div *ngIf="loginForm.controls['password'].touched &&
-      loginForm.controls['password'].invalid" 
-      class="alert-danger">
-      <div *ngIf="loginForm.controls['password'].errors &&
+      loginForm.controls['password'].invalid" class="alert-danger">
+        <div *ngIf="loginForm.controls['password'].errors &&
       loginForm.controls['password'].errors.required">
-          Last name is required.</div>
-  </div>
+          password required.</div>
+      </div>
       <!-- <input type="password" name="password2" placeholder="Retype password" /> -->
       <!-- <input id="rememberChkBox" type="checkbox"> Remember Me -->
       <!-- <button type="submit"   [disabled]=></button> -->
-      <button id="sub" pButton type="submit" name="signup_submit" value="Sign me up" icon="pi pi-check" [disabled]="!loginForm.valid"  label="Sign Me Up"></button>
+      <button id="sub" pButton type="submit" name="signup_submit" value="Sign me up" icon="pi pi-check"
+        [disabled]="!loginForm.valid" label="Sign Me Up"></button>
       <!-- <button type="submit"
       >Submit</button> -->
     </div>
@@ -39,6 +39,5 @@
       <button class="social-signin google">Log in with Google+</button> -->
     </div>
   </div>
-  
-</form>
 
+</form>

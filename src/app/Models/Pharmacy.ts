@@ -1,13 +1,13 @@
 import { User } from './User';
 
 export class Pharmacy {
-    ID: number;
+    id: number;
     name: string;
-    Address: string;
+    address: string;
     telephone: string;
     pharmacyType: string
-    Email: string;
-    location:Number;
-    IsActive:boolean;
+    email: string;
+    location:string;
+    isActive:boolean;
     users : User[]
   }

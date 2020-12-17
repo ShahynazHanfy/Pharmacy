@@ -1,0 +1,193 @@
+<!-- 
+
+
+<input type="text" class="form-control" value="tasneem" readonly>
+
+<div class="container">
+    <div class="option">
+      <input type="radio" name="card" id="silver" value="silver">
+      <label for="silver" aria-label="Silver">
+        <span></span>
+        
+        Silver
+        
+        <div class="card card--white card--sm">
+          <div class="card__chip"></div>
+          <div class="card__content">
+            <div class="card__text">
+              <div class="text__row">
+                <div class="text__loader"></div>
+                <div class="text__loader"></div>
+              </div>
+              <div class="text__row">
+                <div class="text__loader"></div>
+                <div class="text__loader"></div>
+              </div>
+            </div>
+            <div class="card__symbol">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+    
+    <div class="option">
+      <input type="radio" name="card" id="royal" value="royal">
+      <label for="royal" aria-label="Royal blue">
+        <span></span>
+        
+        Royal blue
+        
+        <div class="card card--blue card--sm">
+          <div class="card__chip"></div>
+          <div class="card__content">
+            <div class="card__text">
+              <div class="text__row">
+                <div class="text__loader"></div>
+                <div class="text__loader"></div>
+              </div>
+              <div class="text__row">
+                <div class="text__loader"></div>
+                <div class="text__loader"></div>
+              </div>
+            </div>
+            <div class="card__symbol">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+    
+    <div class="option">
+      <input type="radio" name="card" id="dark" value="dark">
+      <label for="dark" aria-label="Dark grey">
+        <span></span>
+        
+        Dark grey
+        
+        <div class="card card--dark card--sm">
+          <div class="card__chip"></div>
+          <div class="card__content">
+            <div class="card__text">
+              <div class="text__row">
+                <div class="text__loader"></div>
+                <div class="text__loader"></div>
+              </div>
+              <div class="text__row">
+                <div class="text__loader"></div>
+                <div class="text__loader"></div>
+              </div>
+            </div>
+            <div class="card__symbol">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>
+ -->
+
+
+
+
+
+<div class="card">
+    <p-table #dt2 [value]="orders" selectionMode="single" dataKey="id" styleClass="p-datatable-orders" [rows]="10"
+        [paginator]="true" stateStorage="local" stateKey="statedemo-local">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="sourcename">From <p-sortIcon field="sourcename"></p-sortIcon>
+                </th>
+                <th pSortableColumn="targetname">To <p-sortIcon field="targetname"></p-sortIcon>
+                </th>
+                <th pSortableColumn="representative.name"> Date <p-sortIcon field="representative.name"></p-sortIcon>
+                </th>
+                <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($event.target.value, 'sourcename', 'contains')"
+                        [value]="dt2.filters['sourcename']?.value" placeholder="Search by Name" class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($event.target.value, 'targetname', 'contains')"
+                        [value]="dt2.filters['targetname']?.value" placeholder="Search by targetpharmacy"
+                        class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText type="text"
+                        (input)="dt1.filter($event.target.value, 'representative.name', 'contains')"
+                        [value]="dt2.filters['representative.name']?.value" placeholder="Search by Representative"
+                        class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($event.target.value, 'status', 'contains')"
+                        [value]="dt2.filters['status']?.value" placeholder="Search by Status" class="p-column-filter">
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-order>
+            <tr [pSelectableRow]="order">
+                <td *ngIf="order.pharmacySourceID !=0">
+                    <!-- <span class="p-column-title">Name</span> -->
+                    <img src="../../../assets/coco/pharmacy (1).png" width="50px" style="border-radius: 50%;" alt="">
+                    <span style="margin-left: 10px;font-weight: bold;">{{order.pharmacySouceName}}</span>
+                    <span style="font-size: 13px; color: blue;">(Pharmacy)</span>
+                </td>
+                <td *ngIf="order.pharmacyTargetID !=0">
+                    <img src="../../../assets/coco/pharmacy (2).png" width="50px" style="border-radius: 50%;" alt="">
+                    <!-- <span class="p-column-title">Name</span> -->
+                    <span style="font-weight: bold;margin-left: 10px;">{{order.pharmacyTargetName}}</span>
+                    <span style="font-size: 13px; color: blue;">(Pharmacy)</span>
+
+                </td>
+                <td *ngIf="order.patientId !=null">
+                    <img src="../../../assets/coco/patientt.png" width="50px" style="border-radius: 50%;" alt="">
+
+                    <!-- <span class="p-column-title">Name</span> -->
+                    <span style="font-weight: bold;margin-left: 10px;">{{order.patientName}}</span>
+                    <span style="font-size: 13px; color: blue;">(Patient)</span>
+                </td>
+                <td *ngIf="order.supplierID !=null">
+                    <img src="../../../assets/coco/inventory.png" width="50px" style="border-radius: 50%;" alt="">
+                    <!-- <span class="p-column-title">Name</span> -->
+                    <span style="font-weight: bold;margin-left: 10px;"> {{order.supplierName}}</span>
+                    <span style="font-size: 13px; color: blue;">(Supplier)</span>
+                </td>
+                <td>
+                    <span style="font-weight: bold;margin-left: 10px;">{{order.date}}</span>
+                </td>
+                <td *ngIf="order.pendingStatus == false">
+                    <div style="background-color: #c8e6c9;width: 110px;">
+                        <span
+                            style="font-weight: bold;margin-left: 10px;text-transform: uppercase; color: #256029; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">Confirmed</span>
+                    </div>
+                </td>
+                <td *ngIf="order.pendingStatus == true && order.isDeleted == false ">
+                    <div style="background-color: #eccfff;width: 110px;">
+                        <span
+                            style="font-weight: bold;margin-left: 10px;text-transform: uppercase; color: #694382; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">Pending</span>
+                    </div>
+                </td>
+                <td *ngIf="order.isDeleted == true && order.pendingStatus == true">
+                    <div style="background-color: #ffcdd2;width: 110px;">
+                        <span
+                            style="font-weight: bold;margin-left: 10px; color: #c63737;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">CANCELLED</span>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4">No orders found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

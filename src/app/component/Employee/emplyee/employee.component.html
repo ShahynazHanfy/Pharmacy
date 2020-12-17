@@ -101,7 +101,7 @@
 		</div>
 		<div class="col" style="margin-left: 3px;">
 			<label>Select Phrmacy Name</label>
-			<select [(ngModel)]="employee.pharmacyLoggedInID" name="pharmacy" class="form-control">
+			<select [(ngModel)]="employee.pharmacyID" name="pharmacy" class="form-control">
 				<option value="" selected disabled hidden>firm</option>
 				<option *ngFor="let thhe of pharmacy" value="{{thhe.id}}">{{thhe.name}}</option>
 			</select>

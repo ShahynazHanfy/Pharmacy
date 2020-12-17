@@ -17,7 +17,7 @@
             </div>
         </div>
         
-        <div class="p-col-12 p-md-4" *ngIf="storeID==1">
+        <div class="p-col-12 p-md-4">
             <div class="p-inputgroup">
                 <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                 <input type="text" pInputText placeholder="Enter Quantity" [(ngModel)]="DrugDetailsobj.quentity">
@@ -53,12 +53,12 @@
             </div>
         </div>
 
-        <div class="p-col-12 p-md-4">
+        <!-- <div class="p-col-12 p-md-4">
             <div class="p-inputgroup">
                 <span class="p-inputgroup-addon">w</span>
                 <input type="text" pInputText placeholder="Enter License" [(ngModel)]="DrugDetailsobj.license">
             </div>
-        </div>
+        </div> -->
     </div>
     <ng-template pTemplate="footer">
         <p-button icon="pi pi-check" (click)="SubmitDrugDetails()" label="Yes" styleClass="p-button-text" i18n>

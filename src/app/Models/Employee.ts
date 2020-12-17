@@ -5,5 +5,6 @@ export class Employee {
       telephone: string;
       email: string;
       pharmacyLoggedInID: number
+      pharmacyID:number
       pharmacyName:string
     }

@@ -40,6 +40,9 @@ export const environment = {
   patient: 'http://localhost:51563/api/drugs/Patient',
   employee: 'http://localhost:51563/api/Employees/',
   getAllusersByPharmacyName: 'http://localhost:51563/api/Users/GetAllUsersByPharmacyName/',
+  postPharmacy:'http://localhost:51563/api/Pharmacies/',
+  getSupplierById :'http://localhost:51563/api/drugs/getSupplierById/',
+  getPatientById :'http://localhost:51563/api/drugs/getPatientById/',
 
   production: false
 };

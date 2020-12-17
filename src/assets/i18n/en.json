@@ -32,5 +32,22 @@
       "PATIENTS":"PATIENTS",
       "mostakbal":"mostakbal",
       "mostakbalcompany":"mostakbalcompany",
-      "mostakbalzzzz":"mostakbalzzzz"
+      "mostakbalzzzz":"mostakbalzzzz",
+      "delete":"delete",
+      "AddDrugsToYourorder":"AddDrugsTo Your order",
+      "NoProduct":"NoProduct",
+      "From":"From",
+      "pharmacy":"pharmacy",
+      "supplier":"supplier",
+      "patients":"patients",
+      "Pledges": "Pledges",
+      "SelectPharmacy":"SelectPharmacy",
+      "To":"To",
+      "SelectSupplierName":"SelectSupplierName",
+      "PharmacyName":"SelectPharmacyName",
+      "Patients":"Patients",
+      "SelectPledges":"Select Pledge Name",
+      "OrderCode":"OrderCode",
+      "comments":"comments",
+      "selectDrug":"selectDrug"
 }}

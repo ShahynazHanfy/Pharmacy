@@ -13,6 +13,10 @@ export class Order {
     pharmacySourceID:Number
     pendingStatus:boolean
     pharmacyTargetID:number
+    pharmacyTargetName: string
+    pharmacySouceName : string //added it manulally but not get from back directly
+    supplierName : string
+    patientName: string
     pledgeID:number
     patientId:number
    orderDetailList:OrderDetails[]

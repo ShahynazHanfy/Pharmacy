@@ -94,7 +94,8 @@ import 'core-js/es/array';
 import { TheraSubtheraComponent } from './component/thera-subthera/thera-subthera.component';
 import { AllPharmaciesSupADMINComponent } from './component/all-pharmacies-sup-admin/all-pharmacies-sup-admin.component';
 import { SuppliersComponent } from './component/suppliers/suppliers.component';
-import { PatientsComponent } from './component/patients/patients.component'
+import { PatientsComponent } from './component/patients/patients.component';
+import { AllOrdersComponent } from './component/all-orders/all-orders.component'
 registerLocaleData(en);
 
 
@@ -123,7 +124,8 @@ registerLocaleData(en);
     TheraSubtheraComponent,
     AllPharmaciesSupADMINComponent,
     SuppliersComponent,
-    PatientsComponent
+    PatientsComponent,
+    AllOrdersComponent
     
   ],
   imports: [

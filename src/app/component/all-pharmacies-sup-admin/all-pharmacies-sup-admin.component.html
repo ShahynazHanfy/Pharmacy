@@ -7,6 +7,8 @@
             <div class="col">
                 <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()"
                     class="p-button-warning p-mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+                <p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Add New Pharmacy" style="margin-left: 30px;"></p-button>
+
             </div>
         </div>
     </ng-template>
@@ -20,31 +22,6 @@
             <th>Pharmacy Type</th>
         </tr>
         <tr>
-            <!-- <th>
-                <input pInputText type="text" (input)="dt.filter($event.target.value, 'tradeName', 'startsWith')"
-                    placeholder="Search by Name" class="p-column-filter">
-            </th> -->
-            <!-- <th>
-                <p-dropdown [options]="representatives" (onChange)="onRepresentativeChange($event)"
-                    styleClass="p-column-filter" optionLabel="name" styleClass="p-column-filter"
-                    placeholder="Select a Status" [showClear]="true">
-                    <ng-template let-option pTemplate="item">
-                        <div class="p-multiselect-representative-option">
-                            <img [alt]="option.label" src="../../../../assets/coco/{{option.value.image}}" width="32"
-                                style="vertical-align: middle" />
-                            <span class="p-ml-1">{{option.label}}</span>
-                        </div>
-                    </ng-template>
-                </p-dropdown>
-            </th> -->
-
-            <!-- <th>
-                <input pInputText type="text" (input)="dt.filter($event.target.value, 'price', 'startsWith')"
-                    placeholder="Search by Price" class="p-column-filter">
-            </th>
-            <th></th>
-            <th></th> -->
-
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-pharmacy>
@@ -93,18 +70,20 @@
 <div id="content" #content>
 
 </div>
+<!-- for adding dialog  -->
 
 
-<!--  -->
+<!-- For report -->
 <table id="contentToConvert" class="table" hidden>
     <thead>
         <tr>
             <th style="font-size: 15px;">Pharmacy Name </th>
-            <!-- <th style="font-size: 15px;">Drug Name</th> -->
             <th style="font-size: 15px;">Telephone</th>
             <th style="font-size: 15px;">Email</th>
             <th style="font-size: 15px;">User Name</th>
             <th style="font-size: 15px;">Role</th>
+            <th style="font-size: 15px;">Pharmacy Type</th>
+
         </tr>
     </thead>
     <ng-container>
@@ -150,7 +129,69 @@
                         </tr>
                     </table>
                 </td>
+                <td style="font-weight: bold;">{{doc.pharmacyType}}</td>
+
             </tr>
+
         </tbody>
     </ng-container>
 </table>
+
+
+
+<p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+    <h1 style="color: crimson; margin-left: 30px;">ADD NEW PHARMACY</h1>
+    <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Enter Pharmacy Name" [(ngModel)]="pharmacy.name">
+        </div>
+    </div>
+
+    <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">ADD</span>
+            <input type="text" pInputText placeholder="Enter Pharmacy Address" [(ngModel)]="pharmacy.address">
+            <!-- <span class="p-inputgroup-addon">.00</span>       -->
+        </div>
+    </div>
+    <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">AR</span>
+            <input type="text" pInputText placeholder="Enter Pharmacy Telephone" [(ngModel)]="pharmacy.telephone">
+            <!-- <span class="p-inputgroup-addon">.00</span>       -->
+        </div>
+    </div>
+    <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">AR</span>
+            <input type="text" pInputText placeholder="Enter Pharmacy Email" [(ngModel)]="pharmacy.email">
+            <!-- <span class="p-inputgroup-addon">.00</span>       -->
+        </div>
+    </div>
+    <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon">AR</span>
+            <input type="text" pInputText placeholder="Enter Pharmacy location" [(ngModel)]="pharmacy.location">
+            <!-- <span class="p-inputgroup-addon">.00</span>       -->
+        </div>
+    </div>
+    <div class="p-field-radiobutton">
+        <p-radioButton name="city" value="Pharmacy" [(ngModel)]="pharmacy.pharmacyType">
+        </p-radioButton>
+        <label for="city4" style="margin-left: 10px;">Pharmacy</label>
+        <p-radioButton name="city" value="Pledge" [(ngModel)]="pharmacy.pharmacyType">
+        </p-radioButton>
+        <label for="city4" style="margin-left: 10px;">Pledge</label>
+    </div>
+    <div class="p-col-12 p-md-4">
+        <h4 style="font-weight: bold; margin-left: 15px;">Is Active</h4>
+        <p-inputSwitch [(ngModel)]="pharmacy.isActive" name="IsActive" class="col" (click)="!pharmacy.isActive">
+        </p-inputSwitch>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="addNewPharmacy()" label="Yes" styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-times" (click)="displayModal=false" label="No"></p-button>
+    </ng-template>
+</p-dialog>

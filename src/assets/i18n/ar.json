@@ -32,6 +32,23 @@
       "PATIENTS":"المرضي",
       "mostakbal":"المستقبل ",
       "mostakbalcompany":"شركه المستقبل",
-      "mostakbalzzzz":"ززززززززززززززز"
+      "mostakbalzzzz":"ززززززززززززززز",
+      "delete":"مسح",
+      "AddDrugsToYourorder":"اضف الادويه اللي تحتاجها",
+      "NoProduct":"لا يوجد اي منتجات",
+      "From":"من",
+      "pharmacy":"صيدليه",
+      "supplier":"المورد",
+      "patients":"المرضي",
+      "Pledges":"العهد",
+      "SelectPharmacy":"صيدليتي",
+      "To":"الي",
+      "SelectSupplierName":"اختر اسم الشركه المصنعه",
+      "PharmacyName":"اسم الصيدليه المرسل لها ",
+      "Patients":"اختر اسم المريض",
+      "SelectPledges":"اختر اسم العهده",
+      "OrderCode":"كود الاوردر",
+      "comments": "التعليقات",
+      "selectDrug":" اختر دواء"
     }
 }

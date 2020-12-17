@@ -34,8 +34,6 @@ import autoTable from 'jspdf-autotable';
   templateUrl: './show-drug.component.html',
   styleUrls: ['./show-drug.component.css'],
   providers: [MessageService]
-
-
 })
 export class ShowDrugComponent implements OnInit {
 
@@ -131,8 +129,8 @@ export class ShowDrugComponent implements OnInit {
    
     this.pharmacyService.getPharmacyById(this.pharmacyLoggedInID).subscribe(e=>{
       this.pharmacyName = e.name
-      this.pharmacySelectedId = e.ID
-      this.pharmacyLoggedInID = e.ID
+      this.pharmacySelectedId = e.id
+      this.pharmacyLoggedInID = e.id
     })
   
     this.role = localStorage.getItem('roles')

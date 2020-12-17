@@ -75,6 +75,9 @@ GetAllThera(): Observable <TheraGroup[]>{
 GetAllPatients(): Observable <Patient[]>{
   return this.httpClient.get<Patient[]> (`${environment.patient}`,this.httpHeader) ;
 }
+getPatientsByID(patientId: Number): Observable <Patient>{
+  return this.httpClient.get<Patient> (`${environment.getPatientById}${patientId}`,this.httpHeader) ;
+}
 
 GetAllActiveThera(): Observable <TheraGroup[]>{
   return this.httpClient.get<TheraGroup[]> (`${environment.ActiveThera}`,this.httpHeader) ;
@@ -151,6 +154,9 @@ GetAllPledges(): Observable <Pledge[]>{
 
 GetAllSuppliers(): Observable <Supplier[]>{
   return this.httpClient.get<Supplier[]> (`${environment.supplier}`,this.httpHeader) ;
+}
+getSuppByID(Suppid: Number): Observable <Supplier>{
+  return this.httpClient.get<Supplier> (`${environment.getSupplierById}${Suppid}`,this.httpHeader) ;
 }
 // getProductsWithOrdersSmall() {
 //   return this.httpClient.get<any>('assets/products-orders-small.json')

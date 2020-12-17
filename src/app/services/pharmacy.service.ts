@@ -26,4 +26,7 @@ export class PharmacyService {
   getPharmacyById(id: Number): Observable <Pharmacy>{
     return this.httpClient.get<Pharmacy> (`${environment.pharmacy}${id}`,this.httpHeader) ;
   }
+  postPharmacy(pharmacy :Pharmacy): Observable <Pharmacy>{
+    return this.httpClient.post<Pharmacy> (`${environment.postPharmacy}`,pharmacy,this.httpHeader) ;
+  }
 }

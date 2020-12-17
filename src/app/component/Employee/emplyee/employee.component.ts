@@ -42,7 +42,7 @@ export class EmployeeComponent implements OnInit {
    
     this.employee =
     {
-      id:0,name:'',address:'',email:'',pharmacyLoggedInID:0,telephone:'',pharmacyName:''
+      id:0,name:'',address:'',email:'',pharmacyLoggedInID:0,telephone:'',pharmacyName:'',pharmacyID:0
     }
     
     this.EmployeesService.GetAllEmployees()
@@ -62,7 +62,7 @@ export class EmployeeComponent implements OnInit {
   {
     this.employee =
     {
-      id:0,name:'',address:'',email:'',pharmacyLoggedInID:0,telephone:'',pharmacyName:''
+      id:0,name:'',address:'',email:'',pharmacyLoggedInID:0,telephone:'',pharmacyName:'', pharmacyID:0
     }
     this.pharmacy=[]
     this.pharmacyService.GetAllPharmacies()
@@ -81,6 +81,7 @@ export class EmployeeComponent implements OnInit {
 
   addNewEmployee()
   {
+    this.employee.pharmacyID=Number(this.employee.pharmacyID)
     // this.ngOnInit()
     this.EmployeesService.insertEmployee(this.employee)
     .subscribe(e=>{
